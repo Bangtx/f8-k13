@@ -1,2 +1,16 @@
             huy 2k2     vuong 2k    hoc 2k1
 giang 98    trung 98    nam 95      son 94
+
+protocl   donmainb
+
+re-use
+https://fullstack.edu.vn/
+                            path  path  params
+https://fullstack.edu.vn/landing/htmlcss?id=3
+
+h1: heading tiêu đề
+    h1 -> h6: h1 nên là nội dung chính, tiếp theo đó là h2, h3 -> h6
+P: thẻ đoạn văn bản
+    khi viết xuống dong hoặc nhiều dầu cách thì thể p tự đông chuyển về đúng đinh dạng (1 space)
+    nếu muốn hiện thị dâu cách thì dùng &nbsp;
+b: in đậm
