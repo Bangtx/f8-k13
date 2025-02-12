@@ -13,4 +13,37 @@ h1: heading tiêu đề
 P: thẻ đoạn văn bản
     khi viết xuống dong hoặc nhiều dầu cách thì thể p tự đông chuyển về đúng đinh dạng (1 space)
     nếu muốn hiện thị dâu cách thì dùng &nbsp;
-b: in đậm
+b: in đậm - non semantic
+strong: in dam -> semantic
+<b>hello anh em</b>
+<strong>hello</strong> anh em
+
+
+root folder
+
+root
+    app
+    web
+        html
+        js
+    api
+        python
+            py3
+            py2
+        js
+        java
+    deployment
+
+ls: lấy ds folder & file ở folder hien tại
+cd web: -> nhảy vào folder web
+cd .. -> nhảy vào folder root
+cd api/python/py3
+cd ../../..
+cd /
+
+<a href="../test/index.html">
+<a href="/test/index.html">
+<a href="test/index.html">
+<a href="//youtube.com">
+<a href="https://youtube.com">
+<a href="/test/../test2/../index.html">
