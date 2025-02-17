@@ -70,3 +70,6 @@ https://example.com/blog/post.html
 <a hef="/product/index2.html"></a>
     -> https://example.com/product/index2.html
     -> https://example.com/product/
+
+<a hef="product/index.html"></a>
+    -> https://example.com/blog/product/index.html
