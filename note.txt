@@ -47,3 +47,26 @@ cd /
 <a href="//youtube.com">
 <a href="https://youtube.com">
 <a href="/test/../test2/../index.html">
+
+UX: Trai Nghiem nguoi dung
+UI: Giao dien
+
+
+
+https://example.com/blog/post.html
+
+<a hef="about.html"></a>
+    -> https://example.com/blog/about.html
+
+<a hef="/about.html"></a>
+    -> https://example.com/blog/about.html (hoc / giang / nam / vuong)
+    -> https://example.com/about.html (trung, luc, dung, son)
+
+<a hef="../index.html"></a>
+    -> https://example.com/blog/index.html (hoc)
+    -> https://example.com/index.html (giang / a son / trung) -> https://example.com/
+    -> https://example.com/blog (a nam)
+
+<a hef="/product/index2.html"></a>
+    -> https://example.com/product/index2.html
+    -> https://example.com/product/

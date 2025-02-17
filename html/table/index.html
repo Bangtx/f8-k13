@@ -8,39 +8,56 @@
     <title>Document</title>
 </head>
 <body>
-    <table border="1" width="100%" cellpadding="10" cellspacing="0">
-        <tr>
-            <th>No</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Saraly</th>
-        </tr>
-        <tr>
-            <td align="right">1</td>
-            <td>Tran Xuan Bang</td>
-            <td align="right">26</td>
-            <td align="right" rowspan="2">1000</td>
-        </tr>
-        <tr>
-            <td align="right">2</td>
-            <td>Tran Xuan AN</td>
-            <td align="right">25</td>
-<!--            <td align="right">1000</td>-->
-        </tr>
-        <tr>
-            <td align="right">3</td>
-            <td>Nguyen Van Son</td>
-            <td align="right">25</td>
-            <td align="right">2500</td>
-        </tr>
+<table border="1" width="100%" cellpadding="10" cellspacing="0">
+    <thead>
+    <tr>
+        <th>No</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Salary</th>
+        <th>Skill</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td align="right">1</td>
+        <td>Tran Xuan Bang</td>
+        <td align="right">26</td>
+        <td align="right">1000</td>
+        <td>
+            <ul>
+                <li>Java</li>
+                <li>Python</li>
+                <li>JavaScript</li>
+                <li>ReactJS</li>
+                <li>AngularJS</li>
+                <li>VueJS</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">2</td>
+        <td>Tran Xuan AN</td>
+        <td align="right">25</td>
+        <td align="right">1000</td>
+    </tr>
+    <tr>
+        <td align="right">3</td>
+        <td>Nguyen Van Son</td>
+        <td align="right">25</td>
+        <td align="right">2500</td>
+    </tr>
+    </tbody>
+    <tfoot>
         <tr>
             <td colspan="3" align="right">Average</td>
             <td>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoFRQjM-wM_nXMA03AGDXgJK3VeX7vtD3ctA&s"
-                    width="100"
+                     width="100"
                 >
             </td>
         </tr>
-    </table>
+    </tfoot>
+</table>
 </body>
 </html>

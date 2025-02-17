@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>My Webpage</h1>
+    <hr/>
+    <form action="https://api-gateway.fullstack.edu.vn/action_page.php" method="post">
+        <label for="name">Name</label>
+        <input id="name" name="lastname" placeholder="Ho Va Ten" type="text" value="" required minlength="2"/>
+        <br/>
+        <label for="age">Age</label>
+        <input id="age" name="age" placeholder="Tuoi" type="number" value="" min="18" max="99" step="1.1"/>
+        <br/>
+        <label for="email">Email</label>
+        <input id="email" name="email" placeholder="Email" type="email" value="bang@test.com" disabled/>
+        <br/>
+        <label for="pass">Password</label>
+        <input id="pass" name="pass" placeholder="Password" type="password" value=""/>
+        <br/>
+
+        <label for="male">male</label>
+        <input id="male" type="radio" name="gender" value="male">
+        <label for="female">female</label>
+        <input id="female" type="radio" name="gender" value="female">
+        <label for="other">other</label>
+        <input id="other" type="radio" name="gender" value="other">
+        <br/>
+
+        <span>Skill</span>
+        <label for="html">html</label>
+        <input type="checkbox" id="html" name="skill[]" value="html5">
+<!--        html5 value will be attach to skill variable-->
+        <label for="css">css</label>
+        <input type="checkbox" id="css" name="skill[]" value="css">
+        <br/>
+
+        <label>msg</label>
+        <textarea id="msg" name="msg" cols="30" rows="5">test</textarea>
+
+        <br/>
+        <label for="image">image</label>
+        <input id="image" name="image" type="file" multiple >
+
+        <br/>
+        <label>test</label>
+        <input name="range" type="range" min="10" max="100">
+
+        <br/>
+        <input type="submit" value="ok">
+        <button type="submit">submit btn</button>
+        <button type="button">raw btn</button>
+        <button type="reset">reset</button>
+    </form>
+</body>
+</html>
