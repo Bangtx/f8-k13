@@ -1,0 +1,38 @@
+/*code css*/
+
+h1 {
+    color: red;
+}
+
+/*p {*/
+/*    color: green;*/
+/*}*/
+
+h2 {
+    color: blue;
+}
+
+h2 ~ p {
+    color: green;
+}
+
+section.content-1 > span {
+    color: red;
+}
+
+/*div p span {*/
+/*    color: black;*/
+/*}*/
+
+/*h2 + p + p + div p span {*/
+/*    color: orange;*/
+/*}*/
+
+/*.my-para {*/
+/*    color: yellow;*/
+/*}*/
+
+/*.my-para {*/
+/*    color: aqua;*/
+/*}*/
+

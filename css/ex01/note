@@ -1,0 +1,22 @@
+<!--inline css
+<h1 style="color: red">test</h1>
+
+Internal CSS
+<style>
+    h1 {
+        color: red;
+    }
+    *selection* {
+        css code
+    }
+</style>
+
+class and id
+
+class and id are attributes
+
+dau `~` tat ca nhung the duong phia sau
+h2 ~ p : tat ca the p sau the h2
+h2 + p : chi duy nhat the p ngay sau h2
+div p : the p ben trong the div
+div > p : the p la con ruot the div

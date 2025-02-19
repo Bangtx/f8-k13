@@ -1,0 +1,15 @@
+/*h1, ul li a[target] {*/
+/*    color: red;*/
+/*}*/
+
+/*a[href^="https"] {*/
+/*    color: green;*/
+/*}*/
+
+/*a[href$=".com/"] {*/
+/*    color: red;*/
+/*}*/
+
+a[href*="www"] {
+    color: red;
+}

@@ -1,0 +1,33 @@
+h1::before {
+    content: "♥️";
+}
+
+p::after {
+    content: "B";
+}
+p::first-line {
+    color: red;
+}
+p::first-letter {
+    color: rgb(255, 255, 0);
+}
+.blue--text {
+    color: blue;
+}
+.red--bg {
+    background-color: red;
+}
+.red--text {
+    color: red;
+}
+.text-font--40 {
+    font-size: 40px;
+}
+p::selection {
+    color: black;
+    background-color: black;
+}
+.my-input::placeholder {
+    color: red;
+    background-color: #B2b244;
+}

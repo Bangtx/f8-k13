@@ -1,0 +1,17 @@
+h1, ul li a[target] {
+    color: red;
+}
+
+the h1 va the a (co thuoc tinh target nam trong ul > li) co cung css
+
+a[href^="https"] {
+    color: red;
+}
+
+href bat dau bang https thi nhan css
+
+a[href*="www"] {
+    color: red;
+}
+
+trong href co chua www thi nhan css
