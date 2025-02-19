@@ -1,0 +1,18 @@
+body:hover {
+    color: blue;
+}
+h1:hover {
+    color: red;
+}
+p:hover {
+    color: green;
+}
+span:hover {
+    color: yellow;
+}
+input.my-input:hover::placeholder {
+    color: red;
+}
+div > ul li {
+    color: blue;
+}

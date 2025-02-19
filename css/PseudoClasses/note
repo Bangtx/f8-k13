@@ -1,0 +1,16 @@
+cu phap
+
+selector:pseudoclass {
+    css code
+}
+
+:active
+:checked
+:disabled
+:first-child
+:first-or-type
+:focus
+:hover
+:not
+:nth-child
+:nth-of-type

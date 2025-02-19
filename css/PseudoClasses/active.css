@@ -1,0 +1,26 @@
+h1:active {
+    color: red;
+}
+input:focus {
+    color: blue;
+}
+#answer1:checked ~ h2 {
+    color: red;
+}
+#answer2:checked ~ h2 {
+    color: green;
+}
+#answer3:checked ~ h2 {
+    color: blue;
+}
+#answer4:checked ~ h2 {
+    color: yellow;
+}
+input[disabled] {
+    color: red;
+    background-color: lightgray;
+}
+
+ul > li:nth-of-type(2n):not(span) {
+    color: red;
+}
