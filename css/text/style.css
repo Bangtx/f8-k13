@@ -1,0 +1,38 @@
+h1 {
+    color: red;
+    text-align: center;
+    text-transform: capitalize;
+    padding: 50px 40px 30px 20px;
+    /*background-color: blue;*/
+}
+span {
+    text-align: center;
+    font-size: 50px;
+    padding-left: 20px;
+    margin-left: 20px;
+    background-color: yellow;
+    border: 10px solid black;
+    border-radius: 5px;
+}
+html {
+    font-size: 20px;
+}
+/*div {*/
+/*    font-size: 20px;*/
+/*}*/
+p {
+    /*background-color: green;*/
+    font-size: 2rem;
+    /*font-family: "Inter";*/
+    font-weight: 600;
+    text-transform: capitalize;
+    line-height: 1.2;
+    text-shadow: red 4px 4px 4px;
+    font-style: oblique;
+}
+.font-size--32 {
+    font-size: 32px;
+}
+div {
+    background-image: url("https://www.hollywoodreporter.com/wp-content/uploads/2012/12/img_logo_blue.jpg?w=1440&h=810&crop=1");
+}
