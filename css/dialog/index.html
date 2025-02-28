@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .overlay {
+        background-color: #ccc;
+        width: 100vh;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .dialog {
+        background-color: #fff;
+        box-shadow: 0 0 10px red;
+        border-radius: 10px;
+    }
+</style>
+
+<body>
+<div class="overlay">
+    <div class="dialog">
+        <div style="padding: 16px; display: flex; justify-content: space-between; background-color: #888888; color: white">
+            <h2>Dialog Title</h2>
+            <span>X</span>
+        </div>
+        <p>This is a sample dialog box.</p>
+        <button onclick="closeDialog()">Close</button>
+    </div>
+</div>
+</body>
+</html>
