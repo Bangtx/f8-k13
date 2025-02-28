@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#content {
+    /*background-image: url("img.jpg");*/
+    /*background-color: red;*/
+    /*height: 500px;*/
+    background-repeat: no-repeat;
+    /*background-position: 0 -192px;*/
+    background-size: 300px;
+    background: red url("img.jpg");
+    /*background-attachment: fixed;*/
+}

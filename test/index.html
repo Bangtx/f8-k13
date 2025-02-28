@@ -2,9 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Input với Icon</title>
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .input-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 200px;
+            height: 32px;
+            border: 1px solid black;
+        }
+
+        #text {
+            height: 100%;
+            font-size: 16px;
+            width: 100%;
+            border: none;
+        }
+
+        .input-icon {
+            width: 32px;
+            background-color: black;
+            color: white;
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
-  <p>test</p>
+<p>Test Input với Icon</p>
+<div class="input-container">
+    <div class="input-icon">
+        <span class="mdi mdi-magnify"></span>
+    </div>
+    <input type="text" placeholder="Tìm kiếm..." id="text">
+    <span>*</span>
+</div>
 </body>
 </html>

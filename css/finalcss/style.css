@@ -1,0 +1,115 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Roboto;
+}
+.container {
+    display: flex;
+}
+.side-bar {
+    width: 250px;
+    background-color: rgb(28 36 52);
+    height: 100vh;
+    color: white;
+}
+
+.side-bar .logo {
+    font-size: 32px;
+}
+.side-bar__header {
+    display: flex;
+    padding: 16px;
+}
+.side-bar__item {
+    display: flex;
+    padding: 16px;
+}
+.side-bar__header h1 {
+    margin-left: 16px;
+}
+.side-bar__item span:first-child {
+    margin: 0 8px 0 16px;
+}
+.side-bar__item:hover {
+    background-color: rgb(13, 16, 16);
+    cursor: pointer;
+}
+.side-bar__item:nth-of-type(3) {
+    display: block;
+}
+.side-bar__item:nth-of-type(3) > div{
+    display: flex;
+    justify-content: space-between;
+}
+
+/*.side-bar__item:nth-of-type(3) > div:first-child:active +div {*/
+/*    background: red;*/
+/*    display: block;*/
+/*}*/
+
+.side-bar__item:nth-of-type(3) > div:nth-child(2) > div{
+    display: none;
+}
+
+.side-bar__item__child_item:first-child {
+    margin-top: 16px;
+}
+.side-bar__item__child_item {
+    padding: 16px;
+}
+#toggle:checked ~ div {
+    display: block;
+}
+.body-container {
+    width: calc(100% - 250px);
+}
+.table-header {
+    display: flex;
+}
+.table-header__cell {
+    /*background-color: red;*/
+    flex-grow: 0;
+}
+.table-header__cell:first-child, .table-body .table-body__cell:first-child {
+    width: 64px;
+}
+.table-header__cell:last-child, .table-body .table-body__cell:last-child {
+    width: 150px;
+}
+.table-header__cell:nth-child(2),
+.table-header__cell:nth-child(3),
+.table-body .table-body__cell:nth-child(2),
+.table-body .table-body__cell:nth-child(3) {
+    /*background-color: green;*/
+    flex-grow: 1;
+}
+.table-header {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.table-body, .table-header {
+    display: flex;
+    padding: 16px;
+    border-bottom: 1px solid #ccc;
+}
+.table {
+    max-width: 700px;
+    margin: auto;
+}
+.edit-btn, .del-btn {
+    color: white;
+    padding: 4px;
+    border-radius: 5px;
+}
+.edit-btn {
+    background-color: green;
+}
+.del-btn {
+    background-color: red;
+}
+
+
+
+

@@ -1,0 +1,51 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+.container {
+    display: flex;
+    height: 400px;
+    background-color: green;
+    /*justify-content: space-evenly;*/
+    flex-wrap: wrap;
+    align-content: space-around;
+    /*align-items: stretch;*/
+}
+.item {
+    /*flex-grow: 1;*/
+    /*flex-basis: 300px;*/
+    /*flex-shrink: 0;*/
+    border: 1px solid #ccc;
+    width: 200px;
+    height: 100px;
+    color: white;
+    font-size: 24px;
+}
+/*.item:nth-child(2) {*/
+/*    height: 200px;*/
+/*}*/
+/*.item:nth-child(3) {*/
+/*    flex-shrink: 1;*/
+/*}*/
+/*100% / number of items > width  -> width*/
+/*
+  container
+  ┌────────────────────────────────┐
+  │                                │
+  │ ┌───────┐   ┌───────┐  ┌─────┐ │
+  │ │item 1 │   │item 2 │  │ itm3│ │
+  │ │       │   │       │  │     │ │
+  │ │     ┌─┤   │       │  │     │ │
+  │ │     └─┤   │       │  │     │ │
+  │ │       │   │       │  │     │ │
+  │ └───────┘   └───────┘  └─────┘ │
+  │                                │
+  └────────────────────────────────┘
+   item width the same
+
+   if set width = 200px
+
+      if container width / items > width -> i-item width = width
+      esle --> container width / number of items
+
+*/

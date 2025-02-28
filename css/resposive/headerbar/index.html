@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <link href="
+    https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css
+    " rel="stylesheet">
+</head>
+
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    header {
+        display: flex;
+        justify-content: space-between;
+    }
+    nav li {
+        display: inline-block;
+        padding: 16px;
+        list-style: none;
+    }
+    a {
+        text-decoration: none;
+    }
+    .icon {
+        display: none;
+        padding: 16px;
+    }
+    .drawer {
+        display: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        background-color: #ccc;
+    }
+    #menu-icon:checked ~ .drawer {
+        display: block;
+    }
+
+    @media screen and (max-width: 600px) {
+        .icon {
+            display: inline-block;
+        }
+        nav li {
+            display: none;
+        }
+    }
+    @media screen and (min-width: 600px) {
+        .drawer {
+            display: none !important;
+        }
+    }
+</style>
+
+<body>
+<header>
+    <h1>F8</h1>
+    <nav>
+        <ul>
+            <li>
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="#">Products</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+        </ul>
+        <label for="menu-icon">
+            <span class="icon mdi mdi-menu"></span>
+        </label>
+    </nav>
+</header>
+
+<input id="menu-icon" type="checkbox" hidden="">
+<div class="drawer">
+    <ul>
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li>
+            <a href="#">Products</a>
+        </li>
+        <li>
+            <a href="#">Contact</a>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

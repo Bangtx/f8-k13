@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<style>
+    #overview {
+        height: 500px;
+        width: 500px;
+        background-color: red;
+    }
+    
+    @media screen and (max-width: 640px) {
+        #overview {
+            background-color: yellow;
+        }
+    }
+    
+    @media screen and (min-width: 640px) and (max-width: 768px) {
+        #overview {
+            background-color: blue;
+        }
+    }
+</style>
+
+<body>
+<div id="overview"></div>
+</body>
+</html>

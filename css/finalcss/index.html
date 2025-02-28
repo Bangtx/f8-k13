@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <div class="side-bar">
+        <header class="side-bar__header">
+            <span class="mdi mdi-stack-overflow logo"></span>
+            <h1>F8 Admin</h1>
+        </header>
+        <div class="side-bar__item">
+            <span>Menu</span>
+        </div>
+        <div class="side-bar__item">
+            <span class="mdi mdi-account"></span>
+            <span>Quản Lý Đơn Hàng</span>
+        </div>
+        <div class="side-bar__item">
+            <!--        parent-->
+            <div>
+                <label for="toggle">
+                    <span class="mdi mdi-account"></span>
+                    <span>Quản Lý Xe</span>
+                </label>
+                <span class="mdi mdi-chevron-down"></span>
+            </div>
+            <!--        child -->
+            <div>
+                <input id="toggle" type="checkbox" hidden="hidden">
+                <div class="side-bar__item__child">
+                    <div class="side-bar__item__child_item">
+                        <span class="mdi mdi-account"></span>
+                        <span>Quản Lý Xe Máy</span>
+                    </div>
+                    <div class="side-bar__item__child_item">
+                        <span class="mdi mdi-account"></span>
+                        <span>Quản Lý Xe Hơi</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="side-bar__item">
+            <span class="mdi mdi-account"></span>
+            <span>Quản Lý Dịch Vụ</span>
+        </div>
+        <div class="side-bar__item">
+            <span class="mdi mdi-account"></span>
+            <span>Cài Đặt Khác</span>
+        </div>
+    </div>
+
+    <div class="body-container">
+        <h2 style="text-align: center">Members</h2>
+        <div class="table">
+            <div class="table-header">
+                <div class="table-header__cell">Id</div>
+                <div class="table-header__cell">Name</div>
+                <div class="table-header__cell">Mail</div>
+                <div class="table-header__cell">Action</div>
+            </div>
+            <div class="table-body">
+                <div class="table-body__cell">1</div>
+                <div class="table-body__cell">Tran Van A</div>
+                <div class="table-body__cell">a@test.con</div>
+                <div class="table-body__cell">
+                    <button class="edit-btn">
+                        <span class="mdi mdi-pencil"></span>
+                        edit
+                    </button>
+                    <button class="del-btn">
+                        <span class="mdi mdi-trash-can-outline"></span>
+                        delete
+                    </button>
+                </div>
+            </div>
+            <div class="table-body">
+                <div class="table-body__cell">1</div>
+                <div class="table-body__cell">Tran Van A</div>
+                <div class="table-body__cell">a@test.con</div>
+                <div class="table-body__cell">
+                    <button class="edit-btn">
+                        <span class="mdi mdi-pencil"></span>
+                        edit
+                    </button>
+                    <button class="del-btn">
+                        <span class="mdi mdi-trash-can-outline"></span>
+                        delete
+                    </button>
+                </div>
+            </div>
+            <div class="table-body">
+                <div class="table-body__cell">1</div>
+                <div class="table-body__cell">Tran Van A</div>
+                <div class="table-body__cell">a@test.con</div>
+                <div class="table-body__cell">
+                    <button class="edit-btn">
+                        <span class="mdi mdi-pencil"></span>
+                        edit
+                    </button>
+                    <button class="del-btn">
+                        <span class="mdi mdi-trash-can-outline"></span>
+                        delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
