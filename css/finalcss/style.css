@@ -109,6 +109,97 @@
 .del-btn {
     background-color: red;
 }
+.overlay {
+    position: fixed;
+    background-color: rgba(100, 100, 100, 0.3);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.dialog {
+    background-color: white;
+    width: 450px;
+    border-radius: 5px;
+}
+.dialog__header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+    padding: 16px;
+    background-color: rgb(28 36 52);
+    color: white;
+}
+.dialog__body__input {
+    padding: 10px;
+    position: relative;
+}
+.dialog__body__input span {
+    position: absolute;
+    top: 35%;
+    left: 30px;
+    color: #aaa;
+}
+.dialog__body__input input {
+    width: 100%;
+    font-size: 16px;
+    padding: 8px;
+}
+.dialog__body__input input:focus + span {
+    color: #333;
+    top: 0;
+    left: 20px;
+    background-color: white;
+}
+.dialog__body__input input:focus ~ .dropdown {
+    display: block;
+}
+.dropdown {
+    position: absolute;
+    display: none;
+    z-index: 1;
+    background-color: white;
+    width: calc(100% - 20px);
+    border: 1px solid #ccc;
+}
+.dropdown__item {
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+}
+.dialog__body__input .icon {
+    position: absolute;
+    left: 93%;
+}
+
+.dialog__action {
+    display: flex;
+    padding: 4px;
+}
+.dialog__action button {
+    flex-grow: 1;
+    margin: 4px;
+    padding: 8px;
+    font-size: 16px;
+}
+.dialog__action button:first-child {
+    background-color: red;
+    color: white;
+    border: none
+}
+.dialog__action button:last-child {
+    background-color: green;
+    color: white;
+    border: none
+}
+
+
+
+
+
 
 
 
