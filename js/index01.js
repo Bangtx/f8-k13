@@ -83,7 +83,6 @@ var b = Number(a)
 // cho phuong trinh a * x^2 + bx + c = 0
 // cho trc a, b, c
 // tim x
-var a = 5, b = 6, c = 1
 
 /*
 *
@@ -104,20 +103,95 @@ var a = 5, b = 6, c = 1
              x1 = ─────────────────
                          2a
 * */
+// var a = 1, b = -2, c = 1, x1, x2
+// var delta = b*b - 4*a*c
+//
+// if (delta < 0) {
+//     console.log('ptvn')
+// }
+// if (delta === 0) {
+//     x1 = -b / (2 * a)
+//     x2 = x1
+//     console.log('pt co nghiem kep', x1)
+// }
+// if (delta > 0) {
+//     x1 = (-b - delta ** 0.5) / (2 * a)
+//     x2 = (-b + delta ** 0.5) / (2 * a)
+//     console.log('2 ng pb', x1, x2)
+// }
 
 /*
 *  luong
 *
 * */
+// var a = 1
+// console.log("2" === 2)
 
 
+/*
+*
 
+                   khai bao so dien
+                   x = 104
+                      │
+                      ▼     yes
+                   x <= 50 ──────► s = 1.678 * x (vd x = 20 -> s = 1.678 * 20)
+                      │
+                      │no
+                      ▼
+                   s = 50 * 1.678   (vd x = 70 -> s = 50 * 1.678 )
+                  x2 = x - 50       ( x = 70 -> x bac 2 = 20 )
+                      │
+                      │
+                      ▼                 yes
+                  x2 <= 50  (x <= 100) ──────► s = s + 1.734 * x2
+                     │                         s = 50 * 1.678 + 20 * 1.734
+                     │no
+       x = 104       ▼
+       x2 = 54   x3 = x2 - 50
 
+* */
 
+// var x = 104, s
+// if (x <= 50) {
+//     s = 1.678 * x
+// }
+// else {
+//     s = 50 * 1.678
+//     x = x - 50
+//
+//     if (x <= 50) {
+//         s = s + 1.734 * x
+//     }
+//     else {
+//         s = s + 50 * 1.734
+//         x = x - 50
+//     }
+// }
+//
 
+/*
+*
+      grossSalary  =  xxx
+           ▼
+      salaryWithoutEsurance = grossSalary * 0.895
+           ▼                        yes
+      salaryWithoutEsurance <= 11m───────►netSalary =  salaryWithoutEsurance
+           │
+           │no
+           ▼
+      taxSalary  =  salaryWithoutEsurance - 11m
+           │
+           │
+           ▼        yes
+      taxSalary <=5──────►net = salaryWithoutEsurance - 0.05 * taxSalary
+           │
+           │no
+           ▼
+      ▼net = salaryWithoutEsurance - 0.05 * 5m
+      taxSalary =  taxSalary - 5m
 
-
-
+* */
 
 
 
