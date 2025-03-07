@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Title</title>
+</head>
+
+<style>
+  :root {
+    --number-of-item: 3;
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .item  {
+    flex-basis: calc(100% / var(--number-of-item) - 10px);
+    height: 500px;
+    border: 1px solid red;
+  }
+  @media screen and (max-width: 700px) {
+    :root {
+      --number-of-item: 2;
+    }
+  }
+</style>
+
+<body>
+<div class="container">
+  <div class="item"></div>
+  <div class="item"></div>
+  <div class="item"></div>
+  <div class="item"></div>
+</div>
+
+<script>
+  var a = 3, b = 4;
+  console.log("2" + 2, 2 + 2)
+</script>
+</body>
+</html>
