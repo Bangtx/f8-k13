@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<label for="a">Nhap a</label>
+<input id="a" type="number" name="a" value="1"/>
+
+<label for="b">Nhap b</label>
+<input id="b" type="number" name="a" value="-5"/>
+
+<label for="c">Nhap c</label>
+<input id="c" type="number" name="a" value="4"/>
+
+<button id="btn">click</button>
+
+<span id="result"></span>
+<script>
+    let aElement = document.getElementById("a")
+    let bElement = document.getElementById("b")
+    let cElement = document.getElementById("c")
+
+    let btnElement = document.getElementById('btn')
+    btnElement.onclick = doCalc
+
+    function doCalc() {
+        a = Number(aElement.value)
+        b = Number(bElement.value)
+        c = Number(cElement.value)
+        const delta = b**2 - 4*a*c
+
+        // get #result element
+        const resultElement = document.getElementById('result')
+
+        // console.log(delta)
+        if (delta < 0) {
+            console.log('No')
+            resultElement.innerText = ""
+        }
+        else if (delta === 0) {
+            const x = -b / (2*a)
+            console.log(x)
+            resultElement.innerText = x
+        } else {
+            const x1 = (-b - delta ** (1/2)) / (2*a)
+            const x2 = (-b + delta ** (1/2)) / (2*a)
+            console.log(x1, x2)
+            resultElement.innerText = `${x1}, ${x2}`
+        }
+        return 123
+    }
+</script>
+
+</body>
+</html>

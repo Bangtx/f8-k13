@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <table border="1" style="width: 100%;">
+    <thead id="thead">
+      <tr id="th">
+<!--        <th>id</th>-->
+<!--        <th>name</th>-->
+<!--        <th>age</th>-->
+<!--        <th>address</th>-->
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+
+<script>
+  const headers = [
+    { value: 'id', text: 'CCCD'},
+    { value: 'name', text: 'Ten'},
+    { value: 'age', text: 'Tuoi'},
+    { value: 'address', text: 'Dia Chi'},
+  ]
+  const members = [
+    {id: 1, name: 'Luc', age: 30, address: 'Hai Ba Trung - Ha Noi'},
+    {id: 2, name: 'Vuong', age: 20, address: 'Ha Dong - Ha Noi'},
+    {id: 3, name: 'Dung', age: 40, address: 'Thanh Oai - Ha Noi'},
+  ]
+  const tbody = document.querySelector('#tbody')
+  const thead = document.querySelector('#th')
+
+  members.forEach((member, index) => {
+    let row = ''
+    row += '<tr>'
+    headers.forEach(header => {
+      if (index === 0) thead.innerHTML+=`<th>${header.text}</th>`
+      row += `<td>${member[header.value]}</td>`
+    })
+    row += '</tr>'
+    tbody.innerHTML += row
+  })
+
+  // members.forEach(member => {
+  //   let row = ''
+  //   row += '<tr>'
+  //   keys.forEach(key => {
+  //     row += `<td>${member[key]}</td>`
+  //   })
+  //   row += '</tr>'
+  //   tbody.innerHTML += row
+  // })
+</script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+  #calc {
+    border: 1px solid #ccc;
+    width: 400px;
+    height: 800px;
+  }
+  #screen {
+    border: 1px solid #ccc;
+    width: 380px;
+    height: 100px;
+    margin: 10px auto;
+  }
+  #keyboard {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+  }
+  .btn {
+    background-color: #ccc;
+    height: 50px;
+    width: 50px;
+    flex-basis: calc(25% - 10px);
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+</style>
+
+<body>
+<div id="calc">
+  <div id="screen"></div>
+  <div id="keyboard">
+  </div>
+</div>
+
+<script>
+  const btnContents = [
+    {text: 'One', value: 1},
+    {text: 'Two', value: 2},
+    {text: 'Three', value: 3},
+    {text: 'Plus', value: '+'},
+    {text: 'Four', value: 4},
+    {text: 'Five', value: 5},
+    {text: 'Six', value: 6},
+    {text: 'Minus', value: '-'},
+    {text: 'Seven', value: 7},
+    {text: 'Eight', value: 8},
+    {text: 'Nine', value: 9},
+    {text: 'Times', value: '*'},
+    {text: 'AC', value: 'AC'},
+    {text: 'Zero', value: 0},
+    {text: 'Equal', value: '='},
+    {text: 'Divide', value: '/'},
+  ]
+
+  // get keyboard element
+  keyboardElement = document.getElementById('keyboard')
+  // bind data to UI
+  btnContents.forEach(btn => {
+    keyboardElement.innerHTML +=
+      `<div class="btn" onclick="onClick('${btn.value}')">${btn.text}</div>`
+  })
+
+  const onClick = (value) => {
+    console.log(value)
+  }
+</script>
+
+</body>
+</html>

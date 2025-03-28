@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Du thien</title>
+</head>
+<body>
+<h1 id="singerList">ca si noi tieng</h1>
+<h2 class="singerName"><span>Ca si Chau Viet Cuong</span></h2>
+<h2 class="singerName">Ca si Du thien</h2>
+<a href="https://youtube.com/">youtube</a>
+
+<script>
+/* Document
+* getElementsByTagName('ten the / tag name') -> elements
+* getElementById('element id') -> an element
+* getElementByClassName('class name') -> elements
+*
+* innerHTML -> chen vao ben trong the 1 noi dung gi do
+*  */
+const h1Element = document.getElementById('singerList')
+let h2Elements = document.getElementsByClassName('singerName')
+h2Elements = Array.from(h2Elements)
+const aElements = document.getElementsByTagName('a')
+aElements[0].setAttribute('href', 'https://google.com/')
+
+// for (let i = 0; i < 2; i ++) {
+//     console.log(h2Elements[i].innerHTML = `ca su thu ${i}`)
+// }
+
+// setTimeout(() => {
+//     h1Element.innerHTML = '<p>Virus</p>'
+// }, 2000)
+
+</script>
+
+</body>
+</html>
