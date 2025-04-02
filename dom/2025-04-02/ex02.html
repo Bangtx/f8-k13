@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .autocomplete {
+        width: 250px;
+    }
+    input {
+        width: 100%;
+        font-size: 16px;
+        padding: 8px;
+        outline: none;
+        border: 1px solid #8083a6;
+        border-radius: 5px;
+    }
+    input:focus {
+        border: 1px solid #4451EB;
+    }
+    .dropdown {
+        border: 1px solid #ccc;
+        max-height: 200px;
+        overflow-y: scroll;
+    }
+    .dropdown .item {
+        width: 100%;
+        padding: 6px;
+        border-bottom: 1px solid #ccc;
+    }
+</style>
+
+<body>
+<div class="autocomplete">
+    <input name="name" type="text">
+    <div class="dropdown"></div>
+</div>
+<script>
+
+    const members = [
+        {id: 1, name: 'Trung'},
+        {id: 2, name: 'Dung'},
+        {id: 3, name: 'Luc'},
+        {ifd: 4, name: 'Son'},
+        {id: 5, name: 'Giang'},
+        {id: 7, name: 'Hoc'},
+        {id: 8, name: 'Dat'},
+        {id: 9, name: 'Huy'},
+        {id: 10, name: 'Vuong'},
+    ]
+
+    let filteredMembers = [...members]
+
+    const e = document.querySelector('input')
+
+    const listElement = document.querySelector('.dropdown')
+
+    const onRender = () => {
+        listElement.innerHTML = ''
+        filteredMembers.forEach(member => {
+            listElement.innerHTML += `<div class="item">${member.name}</div>`
+        })
+    }
+    e.addEventListener('input', (event) => {
+        filteredMembers = members.filter(member => {
+            console.log(e.value)
+            return member.name.includes(e.value)
+        })
+        console.log(filteredMembers)
+        onRender()
+    })
+
+    onRender()
+    // e.addEventListener('keydown', (event) => {
+    //     console.log('keydown', event)
+    // })
+    // e.addEventListener('keyup', (event) => {
+    //     console.log('keyup', event)
+    // })
+    // e.addEventListener('change', (event) => {
+    //     console.log(event.target.value)
+    // })
+</script>
+</body>
+</html>

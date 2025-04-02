@@ -4,7 +4,62 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
 
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .container {
+        cursor: pointer;
+        border: 1px solid red;
+        width: 100px;
+        /*position: fixed;*/
+        /*top: 10px;*/
+        /*left: 10px;*/
+    }
+</style>
+
+<body>
+<div class="container">
+    <span>test 12345</span>
+</div>
+
+<a href="https://www.youtube.com/">youtube</a>
+<!--
+eventListener
+-->
+
+<script>
+    const aElement = document.querySelector('a')
+    // aElement.click = () => {
+    //     console.log('click')
+    // }
+    aElement.addEventListener('contextmenu', (event) => {
+        event.preventDefault()
+        console.log('click')
+    })
+    // const containerE = document.querySelector('.container')
+    // console.log(containerE)
+    // containerE.addEventListener('drag', (event) => {
+    //     const {x, y} = event
+    //     console.log(x, y)
+    //     containerE.style.top = `${x}px`
+    //     containerE.style.left = `${y}px`
+    // })
+    // const onClick = () => {
+    //     console.log('clicked')
+    // }
+
+    // const btn = document.querySelector('button')
+    // const divE = document.querySelector('div')
+    // divE.addEventListener('mousemove', (event) => {
+    //     console.log(event)
+    // })
+    // btn.onclick = onClick
+    // btn.addEventListener('click', onClick)
+
+</script>
 </body>
 </html>
