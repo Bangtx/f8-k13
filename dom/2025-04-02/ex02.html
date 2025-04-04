@@ -67,6 +67,7 @@
         width: 400px;
         height: 600px;
         background: white;
+        position: relative;
     }
     .dialog__header {
         color: white;
@@ -76,6 +77,31 @@
         display: flex;
         justify-content: space-between;
     }
+    .avata {
+        width: 70px;
+        height: 70px;
+        background: #4451EB;
+        margin: 16px 0 0 16px;
+        background-image: url("https://png.pngtree.com/png-vector/20190411/ourmid/pngtree-vector-camera-icon-png-image_926156.jpg");
+        background-size: contain;
+        border-radius: 10px;
+    }
+    .dialog__action {
+        display: flex;
+        position: absolute;
+        bottom: 0;
+    }
+    .dialog__action > div {
+        width: calc(50% - 32px);
+        background: #707070;
+        color: white;
+        margin: auto;
+        padding: 16px;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 20px;
+    }
+    /*.dialog__action > div*/
 </style>
 
 <body>
@@ -86,7 +112,11 @@
             <span>&times</span>
         </div>
         <div class="dialog__body">
-            <form autocomplete="off">
+            <form autocomplete="off" enctype="multipart/form-data">
+                <label for="avata">
+                    <div class="avata"></div>
+                </label>
+                <input id="avata" type="file" hidden=""/>
                 <div class="autocomplete pa-4">
                     <input placeholder="school" name="name" type="text">
                     <div class="dropdown"></div>
@@ -98,6 +128,10 @@
                     <input name="age" placeholder="age"/>
                 </div>
             </form>
+        </div>
+        <div class="dialog__action">
+            <div>Cancel</div>
+            <div>Save</div>
         </div>
     </div>
 </div>
@@ -116,9 +150,12 @@
     ]
 
     let filteredMembers = [...members]
+    let curInput = 0
 
-    const e = document.querySelector('input')
-
+    // const e = document.querySelector('input')
+    const inputEs = document.querySelectorAll('input')
+    const e = inputEs[1]
+    // inputEs[curInput].focus()
     const listElement = document.querySelector('.dropdown')
     let itemElements = Array.from(document.getElementsByClassName('item'))
 
@@ -136,6 +173,14 @@
         })
         onRender()
     })
+
+    const onInput = (event) => {
+        e.value = itemElements[cursor]?.textContent
+        event.preventDefault()
+        curInput++
+        inputEs[curInput].focus()
+    }
+
     e.addEventListener('keydown', (event) => {
         if (![40, 38, 13].includes(event.keyCode)) return
         if (cursor === null) cursor = 0
@@ -151,11 +196,21 @@
             else itemElement.classList.remove('highlight')
         })
 
-        if (event.keyCode === 13) {
-            e.value = itemElements[cursor].textContent
-            event.preventDefault()
-        }
+        if (event.keyCode === 13) onInput()
     })
+
+    inputEs.forEach((inputE, index) => {
+        // curInput = index
+        inputE.addEventListener('keydown', (event) => {
+            // event.preventDefault()
+            if (event.keyCode !== 13) return
+            onInput(event)
+        })
+        inputE.addEventListener('focus', () => {
+            curInput = index
+        })
+    })
+
 
     onRender()
 
