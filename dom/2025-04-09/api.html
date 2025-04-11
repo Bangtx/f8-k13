@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input name="name"/>
+<button onclick="onSave()">save</button>
+
+<ul id="product-list"></ul>
+
+<script>
+    /*
+    * url: host(domain) + port + path
+    * endpoint: use to get data from api
+    * */
+    const productListE = document.getElementById('product-list')
+    const inputE = document.querySelector('input[name=name]')
+
+    const onSave = () => {
+        const name = inputE.value
+        const payload = {
+            "id": 0,
+            "title": name,
+            "price": 0.1,
+            "description": "string",
+            "category": "string",
+            "image": "http://example.com"
+        }
+        fetch(
+            'https://fakestoreapi.com/products', {
+                method: 'post',
+                body: JSON.stringify(payload)
+            }
+        )
+    }
+
+    fetch('https://fakestoreapi.com/products',
+        {
+            method: 'get',
+            headers: {
+                Trung: 'application/json'
+            }
+        }
+    ).then(e => {
+        console.log('chyua qua day')
+        return e.json()
+    })
+    .then(products => {
+        for (const product of products) {
+            productListE.innerHTML += `<li>${product.title}</li>`
+        }
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+endpoint: https://f8.com/dung/
+
+get:
+    endpoint: /dung/
+    method: get
+create:
+    endpoint: /dung/
+    method: post
+    body: Object
+        - id: number
+        - name: string
+put:
+    endpoint: /dung/{id}
+    method: put
+        param:
+            id: number
+        body: Object
+            - id: number
+            - name: string
+delete:
+    endpoint: /dung/1
+    method: delete
+
