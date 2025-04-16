@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // localStorage.setItem('name', 'f8')
+    // const name = localStorage.getItem('name')
+    // // localStorage.clear()
+    // console.log(Object.keys(localStorage))
+    // sessionStorage.setItem('name', 'test')
+    // console.log(sessionStorage)
+    const ck = "username=John Doe; expires=Mon, 14 Apr 2025 14:16:00 UTC; path=/";
+    console.log(ck.split(';'))
+
+    fetch('url', {
+        headers: {
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiY29kZSI6IjEyMyIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiZXhwIjoxNzQ0NjQzMzU4fQ.jLnzPN6vC3IRySMdbGWXLMPP1y2PiGn5wThs3K_Bhjc'
+        }
+    })
+</script>
+</body>
+</html>

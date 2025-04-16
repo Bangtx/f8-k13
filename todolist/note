@@ -21,3 +21,5 @@ delete:
     endpoint: /dung/1
     method: delete
 
+
+crud: create read upate delete
