@@ -1,0 +1,46 @@
+interface AnimalI {
+    getName: () => string
+    setName: (name: string) => void
+    standing: () => void
+    go: () => void
+    eat: () => void
+}
+
+class Animal implements AnimalI {
+    private name: string = 'animal'
+    private legs: number = 4
+
+    public setName(name: string) {
+        this.name = name
+    }
+
+    public getName(): string {
+        return this.name
+    }
+
+    standing() {
+        console.log('ngoi day')
+    }
+
+    go() {
+        console.log('di den cho chu')
+    }
+
+    eat() {
+        this.standing()
+        this.go()
+        console.log('an')
+    }
+}
+
+class Person extends Animal {
+    go() {
+        console.log('di vao bep')
+    }
+}
+
+const animal = new Animal()
+const person = new Person()
+person.setName('peroon day')
+
+person.eat()

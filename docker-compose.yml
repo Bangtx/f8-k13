@@ -3,8 +3,9 @@ services:
     container_name: k13-fullstack
     image: node:22.9.0
     working_dir: /app/web
+    user: "1000:1000"
     volumes:
-      - .:/app/web
+      - ./react/:/app/web
     ports:
       - '3000:3000'
-    command: ['npx', 'json-server', 'db.json']
+    command: [ "npm", "run", "dev", "--", "--port", "3000" ]
