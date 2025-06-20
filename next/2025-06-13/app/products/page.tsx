@@ -19,6 +19,8 @@ export default function () {
       <br/>
       {/*<Link href={"products/2"}>product 2</Link>*/}
       <button onClick={() => onClick(2)}>product 2</button>
+
+
     </>
   )
 }
