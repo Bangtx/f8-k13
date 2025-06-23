@@ -2,10 +2,11 @@
 
 // import {useEffect, useState} from "react";
 import api from "@/app/plugins/api";
+import {revalidateTag} from "next/cache";
 
 export default async function Home() {
-  const {data} = await api.get('posts')
-  const posts = data
+  const data = await fetch('http://localhost:4000/posts', { next: { tags: ['collection'] } })
+  const posts = await data.json()
 
   return (
     <>
