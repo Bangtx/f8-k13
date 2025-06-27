@@ -1,11 +1,35 @@
 services:
-  web:
-    container_name: k13-fullstack
-    image: node:22.9.0
-    working_dir: /app/web
-    user: "1000:1000"
-    volumes:
-      - ./react/:/app/web
+  db:
+    container_name: f8-k13-db
+    image: postgres:16
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=default
     ports:
-      - '3000:3000'
-    command: [ "npm", "run", "dev", "--", "--port", "3000" ]
+      - '5000:5432'
+    volumes:
+      - ./db:/var/lib/postgresql/data
+
+#  db2:
+#    container_name: f8-k13-db2
+#    image: mysql:8.0
+#    environment:
+#      MYSQL_ROOT_PASSWORD: mysql
+#      MYSQL_USER: user
+#      MYSQL_PASSWORD: mysql
+#      MYSQL_DATABASE: default
+#    volumes:
+#      - ./db2:/var/lib/mysql
+
+
+#  web:
+#    container_name: k13-fullstack
+#    image: node:22.9.0
+#    working_dir: /app/web
+#    user: "1000:1000"
+#    volumes:
+#      - ./react/:/app/web
+#    ports:
+#      - '3000:3000'
+#    command: [ "npm", "run", "dev", "--", "--port", "3000" ]
