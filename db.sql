@@ -339,7 +339,163 @@ SELECT lo_unlink(l.oid)
 FROM pg_largeobject_metadata l;
 
 
+DROP TABLE IF EXISTS "user";
+CREATE TABLE IF NOT EXISTS "user" (
+                                      id bigserial PRIMARY KEY,
+                                      full_name VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
+    gender VARCHAR(10),
+    date_of_birth DATE,
+    country_code VARCHAR(2),
+    created_at timestamp with time zone NOT NULL DEFAULT now(),
+    created_by bigint,
+    modified_at timestamp with time zone,
+    modified_by bigint,
+    deleted_at timestamp with time zone,
+                             deleted_by bigint,
+                             active boolean DEFAULT TRUE
+                             );
+
+DROP TABLE IF EXISTS "category";
+CREATE TABLE IF NOT EXISTS "category" (
+                                          id SERIAL PRIMARY KEY,
+                                          name VARCHAR(100) UNIQUE,
+    parent_id bigint,
+    created_at timestamp with time zone NOT NULL DEFAULT now(),
+    created_by bigint,
+    modified_at timestamp with time zone,
+    modified_by bigint,
+    deleted_at timestamp with time zone,
+                             deleted_by bigint,
+                             active boolean DEFAULT TRUE
+                             );
+
+DROP TABLE IF EXISTS product;
+CREATE TABLE IF NOT EXISTS product (
+                                       id SERIAL PRIMARY KEY,
+                                       name VARCHAR(255),
+    price DECIMAL(10,2),
+    category_id bigint,
+    created_at timestamp with time zone NOT NULL DEFAULT now(),
+    created_by bigint,
+    modified_at timestamp with time zone,
+    modified_by bigint,
+    deleted_at timestamp with time zone,
+                             deleted_by bigint,
+                             active boolean DEFAULT TRUE
+                             );
+
+DROP TABLE IF EXISTS "order";
+CREATE TABLE IF NOT EXISTS "order" (
+                                       id SERIAL PRIMARY KEY,
+                                       user_id bigint,
+                                       status VARCHAR(20), -- e.g.  'pending', 'completed', 'cancelled'
+    created_at timestamp with time zone NOT NULL DEFAULT now(),
+    created_by bigint,
+    modified_at timestamp with time zone,
+    modified_by bigint,
+    deleted_at timestamp with time zone,
+                             deleted_by bigint,
+                             active boolean DEFAULT TRUE
+                             );
+
+DROP TABLE IF EXISTS order_item;
+CREATE TABLE IF NOT EXISTS order_item (
+                                          id bigserial primary key,
+                                          order_id bigint,
+                                          product_id bigint,
+                                          quantity bigint,
+                                          price_at_purchase DECIMAL(10,2),
+    created_at timestamp with time zone NOT NULL DEFAULT now(),
+    created_by bigint,
+    modified_at timestamp with time zone,
+    modified_by bigint,
+    deleted_at timestamp with time zone,
+                             deleted_by bigint,
+                             active boolean DEFAULT TRUE
+                             );
 
 
 
+INSERT INTO "user" (full_name, email, gender, date_of_birth, country_code)
+SELECT
+    'User ' || s,
+    'user' || s || '@example.com',
+    CASE WHEN random() < 0.5 THEN 'male' ELSE 'female' END,
+    '1990-01-01'::date + (random() * 365 * 20)::int,
+        (ARRAY['VN', 'US', 'SG', 'JP', 'KR'])[floor(random() * 5 + 1)]
+FROM generate_series(1, 10000) s;
 
+-- 2.2 Tạo 10 danh mục sản phẩm
+INSERT INTO category (name)
+SELECT 'Category ' || s FROM generate_series(1, 10) s;
+
+-- 2.3 Tạo 1,000 sản phẩm
+INSERT INTO product (name, price, category_id)
+SELECT
+    'Product ' || s,
+    (random() * 1000)::DECIMAL(10, 2),
+        floor(random() * 10 + 1)
+FROM generate_series(1, 1000) s;
+
+-- 2.4 Tạo 20,000 đơn hàng
+INSERT INTO "order" (user_id, status, created_at)
+SELECT
+    floor(random() * 10000 + 1),
+    (ARRAY['completed', 'pending', 'cancelled'])[floor(random() * 3 + 1)],
+    '2022-01-01'::timestamp + (random() * 730 * 86400) * interval '1 second'
+FROM generate_series(1, 20000) s;
+
+-- 2.5 Tạo 50,000 chi tiết đơn hàng
+INSERT INTO order_item (order_id, product_id, quantity, price_at_purchase)
+SELECT
+    floor(random() * 20000 + 1),
+    floor(random() * 1000 + 1),
+    floor(random() * 5 + 1),
+    (random() * 1000)::DECIMAL(10, 2)
+FROM generate_series(1, 50000) s;
+
+-- no index: 259
+-- unique: 8.3
+-- composite: 4.3
+explain analyse
+select "user".country_code, "user".email, "user".full_name from "user" where "user".email = 'user9991@example.com';
+
+create index idx_user_country_code_email on "user"(email, country_code);
+drop index idx_user_country_code_email;
+
+create unique index user_email_key on "user"(email) where active = true;
+drop  index user_email_key;
+alter table "user" drop constraint user_email_key;
+-- alter table "user" add constraint user_email_key;
+
+select * from "user" where id = 1;
+-- user1@example.com
+update "user" set active = false, deleted_at = now(), deleted_by = 2 where id = 1;
+insert into "user" (full_name, email, gender, date_of_birth, country_code)
+values ('user 1 test', 'user1@example.com', 'male', '2023-01-02', 'VN');
+
+create index idx_user_id_status on "order"(user_id, status);
+create index idx_order_item_order_id on order_item(order_id);
+drop index idx_order_item_order_id;
+
+explain analyse
+select *
+from "order_item"
+         join "order" on order_item.order_id = "order".id
+         join "user" on "order".user_id = "user".id
+where "order_item".active and "order".active and "user".active and ("user_id" between 50 and 100) and "order".status = 'pending';
+
+explain
+with order_ids as (select "order".id
+                   from "order"
+                            join "user" on "order".user_id = "user".id
+                   where "order".active
+                     and "user".active
+                     and ("user_id" between 80 and 100)
+                     and "order".status = 'pending')
+select * from order_item where order_id in (select id from order_ids);
+
+
+
+alter table "user" add column mood mood default 'ok';
