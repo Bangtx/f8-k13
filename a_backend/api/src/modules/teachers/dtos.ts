@@ -5,15 +5,6 @@ import {TeacherReqI, TeacherResI} from '@/shares'
 
 //payload / body
 export class TeacherReq implements TeacherReqI {
-  // @ApiProperty({
-  //   example: 1
-  // })
-  // @IsNumber({
-  //   allowInfinity: false,
-  //   allowNaN: false
-  // })
-  // id: number
-
   @ApiProperty({
     example: 'test name'
   })
@@ -29,11 +20,3 @@ export class TeacherReq implements TeacherReqI {
   @IsString()
   email?: string
 }
-
-
-// // response model
-// export class TeacherRes implements TeacherResI {
-//     id: number;
-//     name: string;
-//     email?: string;
-// }
