@@ -27,7 +27,7 @@ export class ClassController {
 
   @Put('/:id')
   update(@Param('id') id: number, @Body() cls: ClassReq) {
-    return this.classService.update(Number(id), cls)
+    return this.classService.updateOne(Number(id), cls)
   }
 
   @Delete('/:id')

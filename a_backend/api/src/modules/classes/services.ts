@@ -2,9 +2,10 @@ import {Inject, Injectable } from "@nestjs/common";
 import { DataSource, Repository, SelectQueryBuilder } from 'typeorm';
 import {DATA_SOURCE} from "@/shares";
 import {ClassEntity} from "@/modules/classes/entities";
+import {BaseService} from "@/modules/base/services";
 
 @Injectable()
-export class ClassService {
+export class ClassService extends BaseService<ClassEntity> {
 
   constructor(
     // @Inject(DATA_SOURCE)
@@ -12,6 +13,7 @@ export class ClassService {
     @Inject('ClassEntityRepository')
     private repository: Repository<ClassEntity>
   ) {
+    super(repository)
     // this.repository = this.dataSource.getRepository(ClassEntity)
   }
 
@@ -34,39 +36,6 @@ export class ClassService {
     console.log(query.getSql())
 
     return query.execute()
-  }
-
-  create(cls) {
-    const query = this.repository
-      .createQueryBuilder()
-      .insert()
-      .values(cls)
-    console.log(query.getSql())
-    query.execute()
-    // const classEntity = new ClassEntity()
-    // classEntity.code = cls.code
-    // classEntity.name = cls.name
-    //
-    // this.repository.save(classEntity)
-  }
-
-  async update(id, cls) {
-    // const classEntity = await this.repository.findOneBy({
-    //   id: id
-    // })
-    //
-    // if (!classEntity) return
-    //
-    // classEntity.code = cls.code
-    // classEntity.name = cls.name
-    //
-    // this.repository.save(classEntity)
-    const query = this.repository
-      .createQueryBuilder("class")
-      .update(cls)
-      .where(`class.id = ${id}`)
-    console.log(query.getSql())
-    query.execute()
   }
 
   async softDelete(id: number) {
