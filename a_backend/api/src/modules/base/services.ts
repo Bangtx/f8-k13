@@ -16,10 +16,7 @@ export class BaseService <Entity extends BaseEntity> {
     const query: SelectQueryBuilder<Entity> = this.repository
       .createQueryBuilder(this.getTableName())
       .select()
-      .where(`${this.getTableName()}.active`)
-      // .orderBy(
-      //   `${this.getTableName()}.id`
-      // )
+      .where('active')
 
     return query.execute()
   }
@@ -38,8 +35,8 @@ export class BaseService <Entity extends BaseEntity> {
     const query = this.repository
       .createQueryBuilder("class")
       .update(data)
-      .where(`class.id = ${id}`)
-    console.log(query.getSql())
+      .where('id = :id', {id})
+
     query.execute()
   }
 
@@ -49,12 +46,12 @@ export class BaseService <Entity extends BaseEntity> {
 
   softDelete(id) {
     const query = this.repository
-      .createQueryBuilder("class")
+      .createQueryBuilder(this.getTableName())
       .update({
         active: false,
         deletedAt: new Date()
       } as any)
-      .where(`class.id = ${id}`)
+      .where('id = :id', {id})
 
     query.execute()
   }
