@@ -1,23 +1,26 @@
 import {
   Body,
   Controller, Delete,
-  Get, Param,
+  Get, Inject, Param,
   Post, Put,
 } from "@nestjs/common";
 import {ClassService} from "./services";
 import {ApiHeader, ApiTags } from "@nestjs/swagger";
 import {ClassReq} from "./dtos";
-import {ClassResI} from "@/shares";
+import {ClassResI, ClassServiceI, ClassServiceToken} from "@/shares";
 
 @ApiTags('Class')
 @Controller('/classes')
 export class ClassController {
   // dependency injection
-  constructor(private classService: ClassService) {}
+  constructor(
+    @Inject(ClassServiceToken)
+    private classService: ClassService
+  ) {}
 
   @Get()
   get() {
-    return this.classService.get()
+    return this.classService.find()
   }
 
   @Post()

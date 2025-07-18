@@ -1,27 +1,38 @@
 import { DataSource, Repository, SelectQueryBuilder } from 'typeorm';
 import { BaseEntity } from "@/modules/base/entities";
+import {BaseServiceI} from "@/shares";
 
 
-export class BaseService <Entity extends BaseEntity> {
+export class BaseService <Entity extends BaseEntity> implements BaseServiceI<any, any>{
   constructor(
     protected repository: Repository<Entity>
   ) {
   }
 
-  private getTableName() {
+  findOne: (id: number) => Promise<any>;
+
+  protected getTableName() {
     return this.repository.metadata.name
   }
 
-  find() {
+  protected handleSelect() {
     const query: SelectQueryBuilder<Entity> = this.repository
       .createQueryBuilder(this.getTableName())
       .select()
-      .where('active')
+    return query
+  }
 
+  protected handleFind(query, condition) {
+    return query.where({...condition})
+  }
+
+  async find() {
+    let query = this.handleSelect()
+    query = this.handleFind(query, {active: true})
     return query.execute()
   }
 
-  create(data) {
+  async create(data) {
     // @ts-ignore
     const query: SelectQueryBuilder<Entity> = this.repository
       .createQueryBuilder()
@@ -31,7 +42,7 @@ export class BaseService <Entity extends BaseEntity> {
     query.execute()
   }
 
-  updateOne(id, data) {
+  async updateOne(id, data) {
     const query = this.repository
       .createQueryBuilder("class")
       .update(data)
@@ -44,7 +55,7 @@ export class BaseService <Entity extends BaseEntity> {
 
   }
 
-  softDelete(id) {
+  async softDelete(id) {
     const query = this.repository
       .createQueryBuilder(this.getTableName())
       .update({

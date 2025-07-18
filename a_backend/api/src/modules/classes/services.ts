@@ -1,11 +1,11 @@
 import {Inject, Injectable } from "@nestjs/common";
 import { DataSource, Repository, SelectQueryBuilder } from 'typeorm';
-import {DATA_SOURCE} from "@/shares";
+import {ClassServiceI, DATA_SOURCE} from "@/shares";
 import {ClassEntity} from "@/modules/classes/entities";
 import {BaseService} from "@/modules/base/services";
 
 @Injectable()
-export class ClassService extends BaseService<ClassEntity> {
+export class ClassService extends BaseService<ClassEntity> implements ClassServiceI {
 
   constructor(
     // @Inject(DATA_SOURCE)
@@ -16,7 +16,11 @@ export class ClassService extends BaseService<ClassEntity> {
     super(repository)
   }
 
-  get() {
-    return this.find()
+  protected handleSelect() {
+    return this.repository
+      .createQueryBuilder('class')
+      .select([
+        'id', 'name', 'code'
+      ])
   }
 }
