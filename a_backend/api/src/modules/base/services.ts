@@ -4,12 +4,24 @@ import { BaseEntity } from "@/modules/base/entities";
 
 export class BaseService <Entity extends BaseEntity> {
   constructor(
-    private repository: Repository<Entity>
+    protected repository: Repository<Entity>
   ) {
   }
 
-  find() {
+  private getTableName() {
+    return this.repository.metadata.name
+  }
 
+  find() {
+    const query: SelectQueryBuilder<Entity> = this.repository
+      .createQueryBuilder(this.getTableName())
+      .select()
+      .where(`${this.getTableName()}.active`)
+      // .orderBy(
+      //   `${this.getTableName()}.id`
+      // )
+
+    return query.execute()
   }
 
   create(data) {
@@ -35,7 +47,15 @@ export class BaseService <Entity extends BaseEntity> {
 
   }
 
-  softDelete() {
+  softDelete(id) {
+    const query = this.repository
+      .createQueryBuilder("class")
+      .update({
+        active: false,
+        deletedAt: new Date()
+      } as any)
+      .where(`class.id = ${id}`)
 
+    query.execute()
   }
 }
