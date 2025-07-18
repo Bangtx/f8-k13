@@ -17,7 +17,7 @@ export class ClassController {
 
   @Get()
   get() {
-    return []
+    return this.classService.get()
   }
 
   @Post()
@@ -25,13 +25,13 @@ export class ClassController {
     return this.classService.create(cls)
   }
 
-  // @Put('/:id')
-  // update(@Param('id') id: number, @Body() cls: ClassReq) {
-  //   return this.classService.update(id, cls)
-  // }
-  //
-  // @Delete('/:id')
-  // delete(@Param('id') id: number) {
-  //   return this.classService.delete(id)
-  // }
+  @Put('/:id')
+  update(@Param('id') id: number, @Body() cls: ClassReq) {
+    return this.classService.update(Number(id), cls)
+  }
+
+  @Delete('/:id')
+  delete(@Param('id') id: number) {
+    return this.classService.softDelete(id)
+  }
 }

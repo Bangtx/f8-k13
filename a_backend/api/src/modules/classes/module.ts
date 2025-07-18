@@ -10,11 +10,11 @@ import {DatabaseModule} from "@/database/module";
   imports: [DatabaseModule],
   controllers: [ClassController],
   providers: [
-    // {
-    //   provide: 'ClassEntityRepositoty',
-    //   useFactory: (dataSource: DataSource) => dataSource.getRepository(ClassEntity),
-    //   inject: [DATA_SOURCE]
-    // },
+    {
+      provide: 'ClassEntityRepository',
+      useFactory: (dataSource: DataSource) => dataSource.getRepository(ClassEntity),
+      inject: [DATA_SOURCE]
+    },
     ClassService
   ],
 })
