@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Expose } from 'class-transformer';
 import { IsNumber, IsString, IsNotEmpty } from 'class-validator';
-import {TeacherReqI, TeacherResI} from '@/shares'
+import {Role, TeacherReqI, TeacherResI} from '@/shares'
 
 //payload / body
 export class TeacherReq implements TeacherReqI {
@@ -19,4 +19,20 @@ export class TeacherReq implements TeacherReqI {
   })
   @IsString()
   email?: string
+
+  @ApiProperty({
+    example: '12345678'
+  })
+  @IsString()
+  @IsNotEmpty()
+  password: string;
+
+  // @ApiProperty({
+  //   example: '12345678',
+  //   enum: ['admin', 'student', 'teacher']
+  // })
+  // @IsString()
+  // @IsNotEmpty()
+  // role: Role;
+
 }

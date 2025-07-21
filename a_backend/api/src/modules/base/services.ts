@@ -25,7 +25,7 @@ export abstract class BaseService <Entity extends BaseEntity> implements BaseSer
   protected handleSelect() {
     const query: SelectQueryBuilder<Entity> = this.repository
       .createQueryBuilder(this.getTableName())
-      .select()
+      .select(this.getPublicColumns())
     return query
   }
 
@@ -33,9 +33,9 @@ export abstract class BaseService <Entity extends BaseEntity> implements BaseSer
     return query.where({...condition})
   }
 
-  async find() {
+  async find(condition = {}) {
     let query = this.handleSelect()
-    query = this.handleFind(query, {active: true})
+    query = this.handleFind(query, {...condition, active: true})
     return query.execute()
   }
 

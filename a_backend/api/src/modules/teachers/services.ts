@@ -1,25 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import {TeacherReq} from "@/modules/teachers/dtos";
 import {TeacherReqI, TeacherResI} from "@/shares";
+import {UserService} from "@/modules/users/services";
 
 @Injectable()
-export class TeacherService {
-  private teachers: any = []
+export class TeacherService extends UserService {
 
-  get() {
-    return this.teachers
+  protected handleFind(query, condition): any {
+    query = super.handleFind(query, {...condition, role: 'teacher'});
+    return query
   }
 
-  create(teacher: TeacherReqI) {
-    this.teachers.push(teacher)
-    return teacher
-  }
-
-  update(id, teacher: TeacherReqI) {
-    return teacher
-  }
-
-  delete(id) {
-    return {"msg": "deleted successfully"}
+  async create(data: TeacherReqI): Promise<any> {
+    return super.create({...data, role: 'teacher'});
   }
 }

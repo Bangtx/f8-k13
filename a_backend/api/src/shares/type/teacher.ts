@@ -1,13 +1,14 @@
-interface TeacherBaseI {
-  name: string
-  email?: string
-}
+import {UserBaseI} from "@/shares";
 
-export interface TeacherI extends TeacherBaseI{
+interface TeacherBaseI extends UserBaseI {}
+
+export interface TeacherI extends TeacherBaseI {
   id: number
 }
 
-export interface TeacherReqI extends TeacherBaseI {}
+export interface TeacherReqI extends TeacherBaseI {
+  password: string
+}
 
 export interface TeacherResI extends TeacherI {}
 

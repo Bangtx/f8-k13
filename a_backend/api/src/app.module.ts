@@ -6,7 +6,7 @@ import { DatabaseModule } from "@/database/module";
 import { ClassModule } from "@/modules/classes/module";
 
 @Module({
-  imports: [TeacherModule, DatabaseModule, ClassModule],
+  imports: [TeacherModule, DatabaseModule, ClassModule, TeacherModule],
   controllers: [],
   providers: [AppService],
 })

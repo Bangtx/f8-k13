@@ -1,10 +1,17 @@
 import { Module } from '@nestjs/common';
 import { TeacherController } from './controllers';
 import {TeacherService} from "./services";
+import { UserModule } from "@/modules/users/module";
+import {TeacherServiceToken} from "@/shares";
 
 @Module({
-  imports: [],
+  imports: [UserModule],
   controllers: [TeacherController],
-  providers: [TeacherService],
+  providers: [
+    {
+      provide: TeacherServiceToken,
+      useClass: TeacherService
+    }
+  ]
 })
 export class TeacherModule {}
