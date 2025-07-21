@@ -3,6 +3,7 @@ import { DATA_SOURCE } from "@/shares";
 import * as process from "node:process";
 import { UserEntity } from "@/modules/Users/entities";
 import { ClassEntity } from "@/modules/Classes/entities";
+import {UserClassEntity} from "@/modules/UserClass/entities";
 
 export const databaseProviders = [
   {
@@ -17,7 +18,8 @@ export const databaseProviders = [
         database: process.env.POSTGRES_DB,
         entities: [
           UserEntity,
-          ClassEntity
+          ClassEntity,
+          UserClassEntity
         ],
         synchronize: true,
       });

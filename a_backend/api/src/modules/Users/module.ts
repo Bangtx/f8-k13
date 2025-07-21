@@ -19,6 +19,6 @@ import {DatabaseModule} from "@/database/module";
       useClass: UserService
     }
   ],
-  exports: [UserEntityRepository]
+  exports: [UserEntityRepository, UserServiceToken]
 })
 export class UserModule {}

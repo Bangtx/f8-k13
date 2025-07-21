@@ -1,4 +1,5 @@
 import {ClassReqI, ClassResI, UserReqI, UserResI} from "@/shares";
+import {InvitationI} from "@/shares/type/invitation";
 
 export interface BaseServiceI <RequestI, ResponseI> {
   find: (params?: any) => Promise<ResponseI[]>
@@ -11,3 +12,7 @@ export interface BaseServiceI <RequestI, ResponseI> {
 
 export interface ClassServiceI extends BaseServiceI<ClassReqI, any> {}
 export interface UserServiceI extends BaseServiceI<UserReqI, any> {}
+
+export interface InvitationServiceI {
+  invite: (invitation: InvitationI) => void
+}
