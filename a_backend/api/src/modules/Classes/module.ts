@@ -3,7 +3,7 @@ import { ClassController } from './controllers';
 import { ClassService } from "./services";
 import { DataSource } from 'typeorm';
 import {ClassServiceToken, DATA_SOURCE} from "@/shares";
-import { ClassEntity } from "@/modules/classes/entities";
+import { ClassEntity } from "@/modules/Classes/entities";
 import {DatabaseModule} from "@/database/module";
 
 @Module({

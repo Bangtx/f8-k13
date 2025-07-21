@@ -1,5 +1,5 @@
 import { DataSource, Repository, SelectQueryBuilder } from 'typeorm';
-import { BaseEntity } from "@/modules/base/entities";
+import { BaseEntity } from "@/modules/Base/entities";
 import {BaseServiceI} from "@/shares";
 
 

@@ -1,8 +1,8 @@
 import { DataSource } from 'typeorm';
 import { DATA_SOURCE } from "@/shares";
 import * as process from "node:process";
-import { UserEntity } from "@/modules/users/entities";
-import { ClassEntity } from "@/modules/classes/entities";
+import { UserEntity } from "@/modules/Users/entities";
+import { ClassEntity } from "@/modules/Classes/entities";
 
 export const databaseProviders = [
   {

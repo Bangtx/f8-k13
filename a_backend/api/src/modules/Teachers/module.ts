@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TeacherController } from './controllers';
 import {TeacherService} from "./services";
-import { UserModule } from "@/modules/users/module";
+import { UserModule } from "@/modules/Users/module";
 import {TeacherServiceToken} from "@/shares";
 
 @Module({

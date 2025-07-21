@@ -1,5 +1,5 @@
-import {BaseService} from "@/modules/base/services";
-import {UserEntity} from "@/modules/users/entities";
+import {BaseService} from "@/modules/Base/services";
+import {UserEntity} from "@/modules/Users/entities";
 import {UserEntityRepository, UserServiceI, UserServiceToken} from "@/shares";
 import {Inject, Injectable } from "@nestjs/common";
 import { Repository } from "typeorm";

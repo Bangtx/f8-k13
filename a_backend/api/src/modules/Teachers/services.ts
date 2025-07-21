@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import {TeacherReq} from "@/modules/teachers/dtos";
+import {TeacherReq} from "@/modules/Teachers/dtos";
 import {TeacherReqI, TeacherResI} from "@/shares";
-import {UserService} from "@/modules/users/services";
+import {UserService} from "@/modules/Users/services";
 
 @Injectable()
 export class TeacherService extends UserService {
