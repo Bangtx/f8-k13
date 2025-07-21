@@ -3,11 +3,18 @@ import { BaseEntity } from "@/modules/base/entities";
 import {BaseServiceI} from "@/shares";
 
 
-export class BaseService <Entity extends BaseEntity> implements BaseServiceI<any, any>{
+export abstract class BaseService <Entity extends BaseEntity> implements BaseServiceI<any, any>{
   constructor(
     protected repository: Repository<Entity>
   ) {
   }
+
+  protected getPublicColumns() {
+    const privateColumns = ['createdAt', 'createdBy', 'modifiedAt', 'modifiedBy', 'deletedAt', 'deletedBy', 'active']
+    const columns = this.repository.metadata.columns.map((column) => column.propertyName)
+    return columns.filter(col => !privateColumns.includes(col))
+  }
+
 
   findOne: (id: number) => Promise<any>;
 
@@ -38,8 +45,10 @@ export class BaseService <Entity extends BaseEntity> implements BaseServiceI<any
       .createQueryBuilder()
       .insert()
       .values(data)
+      .returning(this.getPublicColumns())
 
-    query.execute()
+    const response = await query.execute()
+    return response.raw
   }
 
   async updateOne(id, data) {
@@ -47,8 +56,11 @@ export class BaseService <Entity extends BaseEntity> implements BaseServiceI<any
       .createQueryBuilder("class")
       .update(data)
       .where('id = :id', {id})
+      .returning(this.getPublicColumns())
 
-    query.execute()
+    const response = await query.execute()
+
+    return response.raw
   }
 
   updateMany() {
@@ -65,5 +77,7 @@ export class BaseService <Entity extends BaseEntity> implements BaseServiceI<any
       .where('id = :id', {id})
 
     query.execute()
+
+    return {'msg': 'deleted successflly'}
   }
 }

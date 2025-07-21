@@ -1,6 +1,6 @@
 import {Inject, Injectable } from "@nestjs/common";
 import { DataSource, Repository, SelectQueryBuilder } from 'typeorm';
-import {ClassServiceI, DATA_SOURCE} from "@/shares";
+import {ClassResI, ClassServiceI, DATA_SOURCE} from "@/shares";
 import {ClassEntity} from "@/modules/classes/entities";
 import {BaseService} from "@/modules/base/services";
 
@@ -19,8 +19,6 @@ export class ClassService extends BaseService<ClassEntity> implements ClassServi
   protected handleSelect() {
     return this.repository
       .createQueryBuilder('class')
-      .select([
-        'id', 'name', 'code'
-      ])
+      .select(this.getPublicColumns())
   }
 }
