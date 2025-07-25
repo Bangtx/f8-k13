@@ -5,6 +5,9 @@ import { DataSource } from 'typeorm';
 import {ClassServiceToken, DATA_SOURCE} from "@/shares";
 import { ClassEntity } from "@/modules/Classes/entities";
 import {DatabaseModule} from "@/database/module";
+import {UserClassModule} from "@/modules/UserClass/module";
+import {TeacherModule} from "@/modules/Teachers/module";
+import {StudentModule} from "@/modules/Students/module";
 
 @Module({
   imports: [DatabaseModule],

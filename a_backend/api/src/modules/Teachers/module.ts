@@ -12,6 +12,7 @@ import {TeacherServiceToken} from "@/shares";
       provide: TeacherServiceToken,
       useClass: TeacherService
     }
-  ]
+  ],
+  exports: [TeacherServiceToken]
 })
 export class TeacherModule {}

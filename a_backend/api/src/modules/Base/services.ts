@@ -36,6 +36,7 @@ export abstract class BaseService <Entity extends BaseEntity> implements BaseSer
   async find(condition = {}) {
     let query = this.handleSelect()
     query = this.handleFind(query, {...condition, active: true})
+    console.log(query.getSql())
     return query.execute()
   }
 

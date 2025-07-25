@@ -1,10 +1,20 @@
 import {Inject, Injectable } from "@nestjs/common";
 import { DataSource, Repository, SelectQueryBuilder } from 'typeorm';
-import {ClassResI, ClassServiceI, DATA_SOURCE} from "@/shares";
+import {
+  ClassResI,
+  ClassServiceI,
+  ClassServiceToken,
+  DATA_SOURCE, StudentServiceToken,
+  TeacherServiceToken,
+  UserClassServiceToken
+} from "@/shares";
 import {ClassEntity} from "@/modules/Classes/entities";
 import {BaseService} from "@/modules/Base/services";
 import {UserClassEntity} from "@/modules/UserClass/entities";
 import {UserEntity} from "@/modules/Users/entities";
+import {UserClassService} from "@/modules/UserClass/services";
+import {TeacherService} from "@/modules/Teachers/services";
+import {StudentService} from "@/modules/Students/services";
 
 @Injectable()
 export class ClassService extends BaseService<ClassEntity> implements ClassServiceI {
@@ -13,7 +23,16 @@ export class ClassService extends BaseService<ClassEntity> implements ClassServi
     // @Inject(DATA_SOURCE)
     // private dataSource: DataSource
     @Inject('ClassEntityRepository')
-    protected repository: Repository<ClassEntity>
+    protected repository: Repository<ClassEntity>,
+
+    // @Inject(UserClassServiceToken)
+    // private userClassService: UserClassService,
+    //
+    // @Inject(TeacherServiceToken)
+    // private teacherService: TeacherService,
+    //
+    // @Inject(StudentServiceToken)
+    // private studentService: StudentService
   ) {
     super(repository)
   }
@@ -26,16 +45,44 @@ export class ClassService extends BaseService<ClassEntity> implements ClassServi
         'class.code as code',
         'class.name as name',
         `
-          json_agg(
-            json_build_object(
-              'id', "user".id,
-              'name', "user".name
-            )
-          ) as users
+          coalesce(
+            json_agg(
+              json_build_object(
+                'id', "user".id,
+                'name', "user".name,
+                'role', "user".role
+              )
+            ) filter ( where  "user".role = 'teacher')
+          ) as "teachers",
+
+          coalesce(
+            json_agg(
+              json_build_object(
+                'id', "user".id,
+                'name', "user".name,
+                'role', "user".role
+              )
+            ) filter ( where  "user".role = 'student')
+           ) as "students"
         `
       ])
-      .innerJoin(UserClassEntity, 'user_class', 'user_class."classId" = class.id')
-      .innerJoin(UserEntity, 'user', '"user"."id" = user_class.userId')
+      .innerJoin(UserClassEntity, 'user_class', 'user_class."classId" = class.id and user_class.active')
+      .innerJoin(UserEntity, 'user', '"user"."id" = user_class.userId and user.active')
       .groupBy("class.id, class.code, class.name")
   }
+
+  // protected handleFind(query, condition): any {
+  //   query = super.handleFind(query, condition);
+  //   query.andWhere("user_class.active")
+  //   return query
+  // }
+
+  // async getClasses() {
+  //   const classes = await this.find()
+  //   const userClasses = await this.userClassService.find({
+  //     classIds:
+  //   })
+  //   const teachers = await this.teacherService.find()
+  //   const students = await this.studentService.find()
+  // }
 }
