@@ -77,12 +77,25 @@ export class ClassService extends BaseService<ClassEntity> implements ClassServi
   //   return query
   // }
 
-  // async getClasses() {
-  //   const classes = await this.find()
-  //   const userClasses = await this.userClassService.find({
-  //     classIds:
-  //   })
-  //   const teachers = await this.teacherService.find()
-  //   const students = await this.studentService.find()
-  // }
+  async getClasses() {
+    // let query = this.repository
+    //   .createQueryBuilder('class')
+    //   .select([
+    //     'class.id as id',
+    //     'class.code as code',
+    //     'class.name as name'
+    //   ])
+    // query = await this.handleFind(query, {active: true})
+    // return query.execute()
+    return this.repository.find({
+      select: ['id', 'code', 'name'],
+      where: {active: true}
+    })
+    // const classes = await this.find()
+    // const userClasses = await this.userClassService.find({
+    //   classIds:
+    // })
+    // const teachers = await this.teacherService.find()
+    // const students = await this.studentService.find()
+  }
 }
