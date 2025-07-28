@@ -4,6 +4,7 @@ import * as process from "node:process";
 import { UserEntity } from "@/modules/Users/entities";
 import { ClassEntity } from "@/modules/Classes/entities";
 import {UserClassEntity} from "@/modules/UserClass/entities";
+import {FileEntity} from "@/modules/File/entities";
 
 export const databaseProviders = [
   {
@@ -19,7 +20,8 @@ export const databaseProviders = [
         entities: [
           UserEntity,
           ClassEntity,
-          UserClassEntity
+          UserClassEntity,
+          FileEntity
         ],
         synchronize: true,
       });
