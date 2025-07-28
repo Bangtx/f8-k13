@@ -1,22 +1,15 @@
 import {InvitationI} from "@/shares/type/invitation";
 import { ApiProperty } from "@nestjs/swagger";
 import { IsNumber, IsString } from "class-validator";
+import {ApiIntField, ApiStrField} from "@/shares/decorators";
 
 export class InvitationReq implements InvitationI {
-  @ApiProperty({
-    type: 'number'
-  })
-  @IsNumber()
-  userId: number;
-  @ApiProperty({
-    type: 'number'
-  })
-  @IsNumber()
+  @ApiIntField()
+  userId: number
+
+  @ApiIntField()
   classId: number;
 
-  @ApiProperty({
-    type: 'string'
-  })
-  @IsString()
+  @ApiStrField()
   code: string;
 }
