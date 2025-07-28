@@ -12,6 +12,7 @@ async function bootstrap() {
     .setTitle('F8-K13')
     .setDescription('The API description')
     .setVersion('0.0.1')
+    .addBearerAuth()
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, documentFactory, {

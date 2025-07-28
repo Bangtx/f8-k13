@@ -5,10 +5,11 @@ import {
   Post, Put,
 } from "@nestjs/common";
 import {ClassService} from "./services";
-import {ApiHeader, ApiTags } from "@nestjs/swagger";
+import {ApiBearerAuth, ApiHeader, ApiTags} from "@nestjs/swagger";
 import {ClassReq} from "./dtos";
 import {ClassResI, ClassServiceI, ClassServiceToken} from "@/shares";
 
+@ApiBearerAuth()
 @ApiTags('Class')
 @Controller('/classes')
 export class ClassController {

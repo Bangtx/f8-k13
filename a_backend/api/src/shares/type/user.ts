@@ -20,3 +20,13 @@ export interface UserReqI extends UserBaseI {
 }
 
 export interface UserResI extends UserI {}
+
+export interface LoginI {
+  email: string
+  password: string
+}
+
+export interface LoginResI {
+  accessToken: string
+  refreshToken: string
+}
