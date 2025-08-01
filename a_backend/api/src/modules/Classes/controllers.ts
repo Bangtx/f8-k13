@@ -10,6 +10,7 @@ import {ClassService} from "./services";
 import {ApiBearerAuth, ApiHeader, ApiTags} from "@nestjs/swagger";
 import {ClassReq} from "./dtos";
 import {ClassResI, ClassServiceI, ClassServiceToken} from "@/shares";
+import {Transactional} from "typeorm-transactional";
 
 @ApiBearerAuth()
 @ApiTags('Class')
@@ -26,6 +27,7 @@ export class ClassController {
     return this.classService.find()
   }
 
+  @Transactional()
   @Post()
   create(@Body() cls: ClassReq, @Headers() headers: Record < string, string >) {
     cls.userId = Number(headers.userId)

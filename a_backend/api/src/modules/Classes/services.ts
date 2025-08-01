@@ -106,7 +106,7 @@ export class ClassService extends BaseService<ClassEntity> implements ClassServi
 
     // create new record into user_class table
     await this.userClassService.create({
-      classId: newCls[0].id,
+      classId: newCls.id,
       userId: cls.userId
     })
     return newCls

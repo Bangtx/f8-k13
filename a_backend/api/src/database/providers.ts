@@ -5,6 +5,7 @@ import { UserEntity } from "@/modules/Users/entities";
 import { ClassEntity } from "@/modules/Classes/entities";
 import {UserClassEntity} from "@/modules/UserClass/entities";
 import {FileEntity} from "@/modules/File/entities";
+import { initializeTransactionalContext, addTransactionalDataSource, StorageDriver } from 'typeorm-transactional';
 
 export const databaseProviders = [
   {
@@ -26,7 +27,11 @@ export const databaseProviders = [
         synchronize: true,
       });
 
+      initializeTransactionalContext({ storageDriver: StorageDriver.ASYNC_LOCAL_STORAGE });
+      addTransactionalDataSource(dataSource);
+
       return dataSource.initialize();
+      // return addTransactionalDataSource(dataSource);
     },
   },
 ];
