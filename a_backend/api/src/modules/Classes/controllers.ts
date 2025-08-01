@@ -35,11 +35,13 @@ export class ClassController {
   }
 
   @Put('/:id')
+  @Transactional()
   update(@Param('id') id: number, @Body() cls: ClassReq) {
     return this.classService.updateOne(id, cls)
   }
 
   @Delete('/:id')
+  @Transactional()
   delete(@Param('id') id: number) {
     return this.classService.softDelete(id)
   }
