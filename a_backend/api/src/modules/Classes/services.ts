@@ -17,6 +17,7 @@ import {UserClassService} from "@/modules/UserClass/services";
 import {TeacherService} from "@/modules/Teachers/services";
 import {StudentService} from "@/modules/Students/services";
 import {ClassReq} from "@/modules/Classes/dtos";
+import {GmailServer} from "@/shares/services/Mail";
 
 @Injectable()
 export class ClassService extends BaseService<ClassEntity> implements ClassServiceI {
@@ -109,6 +110,9 @@ export class ClassService extends BaseService<ClassEntity> implements ClassServi
       classId: newCls.id,
       userId: cls.userId
     })
+
+    GmailServer.send(['bangtx@fullstack.edu.vn'], 'hihi', 'hihihihihi')
+
     return newCls
   }
 }

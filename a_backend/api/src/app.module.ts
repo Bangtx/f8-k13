@@ -20,7 +20,10 @@ export class AppModule implements NestModule {
     consumer
       .apply(Auth)
       .exclude({
-        path: 'login', method: RequestMethod.POST
+        path: 'login', method: RequestMethod.POST,
+      })
+      .exclude({
+        path: 'files', method: RequestMethod.ALL
       })
       .forRoutes('*')
   }
