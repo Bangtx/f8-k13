@@ -1,6 +1,7 @@
 import {Inject, Injectable } from "@nestjs/common";
 import { DataSource, Repository, SelectQueryBuilder } from 'typeorm';
 import {
+  ClassReqI,
   ClassResI,
   ClassServiceI,
   ClassServiceToken,
@@ -15,6 +16,7 @@ import {UserEntity} from "@/modules/Users/entities";
 import {UserClassService} from "@/modules/UserClass/services";
 import {TeacherService} from "@/modules/Teachers/services";
 import {StudentService} from "@/modules/Students/services";
+import {ClassReq} from "@/modules/Classes/dtos";
 
 @Injectable()
 export class ClassService extends BaseService<ClassEntity> implements ClassServiceI {
@@ -25,8 +27,8 @@ export class ClassService extends BaseService<ClassEntity> implements ClassServi
     @Inject('ClassEntityRepository')
     protected repository: Repository<ClassEntity>,
 
-    // @Inject(UserClassServiceToken)
-    // private userClassService: UserClassService,
+    @Inject(UserClassServiceToken)
+    private userClassService: UserClassService,
     //
     // @Inject(TeacherServiceToken)
     // private teacherService: TeacherService,
@@ -97,5 +99,16 @@ export class ClassService extends BaseService<ClassEntity> implements ClassServi
     // })
     // const teachers = await this.teacherService.find()
     // const students = await this.studentService.find()
+  }
+
+  async create(cls: ClassReqI) {
+    const newCls = await super.create(cls)
+
+    // create new record into user_class table
+    await this.userClassService.create({
+      classId: newCls[0].id,
+      userId: cls.userId
+    })
+    return newCls
   }
 }

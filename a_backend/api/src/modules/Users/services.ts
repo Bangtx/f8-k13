@@ -35,7 +35,7 @@ export class UserService extends BaseService<UserEntity> implements UserServiceI
     // make new jwt token and return
     const token = sign({
       ...user,
-      eat: Math.floor(Date.now() / 1000) + 600
+      // exp: Math.floor(Date.now() / 1000) + 600
     }, privateKey);
 
     return {

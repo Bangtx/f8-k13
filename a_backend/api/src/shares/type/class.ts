@@ -1,6 +1,7 @@
 interface ClassBaseI {
   name: string
   code?: string
+  userId?: number
 }
 
 export interface ClassI extends ClassBaseI {

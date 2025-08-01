@@ -18,4 +18,6 @@ export class ClassReq implements ClassReqI {
   })
   @IsString()
   code: string
+
+  userId: number
 }

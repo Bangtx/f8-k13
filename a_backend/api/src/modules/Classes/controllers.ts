@@ -3,6 +3,8 @@ import {
   Controller, Delete,
   Get, Inject, Param,
   Post, Put,
+  Req,
+  Headers
 } from "@nestjs/common";
 import {ClassService} from "./services";
 import {ApiBearerAuth, ApiHeader, ApiTags} from "@nestjs/swagger";
@@ -25,7 +27,8 @@ export class ClassController {
   }
 
   @Post()
-  create(@Body() cls: ClassReq) {
+  create(@Body() cls: ClassReq, @Headers() headers: Record < string, string >) {
+    cls.userId = Number(headers.userId)
     return this.classService.create(cls)
   }
 
