@@ -5,10 +5,11 @@ import {
   Post, Put,
 } from "@nestjs/common";
 import {TeacherService} from "./services";
-import {ApiHeader, ApiTags } from "@nestjs/swagger";
+import {ApiBearerAuth, ApiHeader, ApiTags } from "@nestjs/swagger";
 import {TeacherReq} from "./dtos";
 import {TeacherResI, TeacherServiceToken} from "@/shares";
 
+@ApiBearerAuth()
 @ApiTags('Teacher')
 @Controller('/teachers')
 export class TeacherController {

@@ -1,12 +1,8 @@
 import {Inject, Injectable } from "@nestjs/common";
-import { DataSource, Repository, SelectQueryBuilder } from 'typeorm';
+import { Repository } from 'typeorm';
 import {
   ClassReqI,
-  ClassResI,
   ClassServiceI,
-  ClassServiceToken,
-  DATA_SOURCE, StudentServiceToken,
-  TeacherServiceToken,
   UserClassServiceToken
 } from "@/shares";
 import {ClassEntity} from "@/modules/Classes/entities";
@@ -14,9 +10,6 @@ import {BaseService} from "@/modules/Base/services";
 import {UserClassEntity} from "@/modules/UserClass/entities";
 import {UserEntity} from "@/modules/Users/entities";
 import {UserClassService} from "@/modules/UserClass/services";
-import {TeacherService} from "@/modules/Teachers/services";
-import {StudentService} from "@/modules/Students/services";
-import {ClassReq} from "@/modules/Classes/dtos";
 import {GmailServer} from "@/shares/services/Mail";
 
 @Injectable()
