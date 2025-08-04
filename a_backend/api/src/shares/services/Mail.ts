@@ -49,13 +49,39 @@ class MailServiceImpl implements MailService {
   }
 }
 
-// class ForgotPasswordMail extends MailServiceImpl {
-//   private getContent(code: string) {
-//     return `
-//       <h1>Forgot password</h1>
-//       <p>you are requesting .....</p>
-//     `
-//   }
-// }
+class MailHogService implements MailService {
+  private sender: string
+  private transporter: any
+
+  constructor(sender: string) {
+    this.sender = sender
+
+    this.getTransporter()
+  }
+
+  private getTransporter(){
+    this.transporter = nodemailer.createTransport({
+      host: 'mailhog',
+      port: 1025,
+      secure: false, // true for 465, false for other ports
+    });
+  }
+
+  async send (
+    receivers: string[],
+    subject: string,
+    content: string // html or text
+  ) {
+    await this.transporter.sendMail({
+      from: this.sender,
+      to: receivers.join(', '),
+      subject: subject,
+      html: content, // HTML body
+    });
+
+    console.log('ok ko')
+  }
+}
 
 export const GmailServer: MailService = new MailServiceImpl('bangtran.hha@gmail.com', 'hdyh icpk lsee mijw', GMAIL_HOST)
+export const MailHog: MailService = new MailHogService('bangtran.test@gmail.com')

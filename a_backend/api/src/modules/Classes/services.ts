@@ -10,7 +10,7 @@ import {BaseService} from "@/modules/Base/services";
 import {UserClassEntity} from "@/modules/UserClass/entities";
 import {UserEntity} from "@/modules/Users/entities";
 import {UserClassService} from "@/modules/UserClass/services";
-import {GmailServer} from "@/shares/services/Mail";
+import {GmailServer, MailHog} from "@/shares/services/Mail";
 
 @Injectable()
 export class ClassService extends BaseService<ClassEntity> implements ClassServiceI {
@@ -87,6 +87,7 @@ export class ClassService extends BaseService<ClassEntity> implements ClassServi
       select: ['id', 'code', 'name'],
       where: {active: true}
     })
+
     // const classes = await this.find()
     // const userClasses = await this.userClassService.find({
     //   classIds:
@@ -104,7 +105,7 @@ export class ClassService extends BaseService<ClassEntity> implements ClassServi
       userId: cls.userId
     })
 
-    GmailServer.send(['bangtx@fullstack.edu.vn'], 'hihi', 'hihihihihi')
+    // GmailServer.send(['bangtx@fullstack.edu.vn'], 'hihi', 'hihihihihi')
 
     return newCls
   }

@@ -9,9 +9,25 @@ import {InvitationModule} from "@/modules/Invitation/module";
 import {FileModule} from "@/modules/File/module";
 import {AuthModule} from "@/modules/Auth/module";
 import {Auth} from "@/middleware";
+import { ConfigModule } from '@nestjs/config';
+import configuration from "@/config/configuration";
+import {MailModule} from "@/modules/MailSender/module";
 
 @Module({
-  imports: [TeacherModule, DatabaseModule, ClassModule, TeacherModule, StudentModule, InvitationModule, FileModule, AuthModule],
+  imports: [
+    ConfigModule.forRoot({
+      load: [configuration],
+    }),
+    TeacherModule,
+    DatabaseModule,
+    ClassModule,
+    TeacherModule,
+    StudentModule,
+    InvitationModule,
+    FileModule,
+    AuthModule,
+    MailModule
+  ],
   controllers: [],
   providers: [AppService],
 })
@@ -24,6 +40,9 @@ export class AppModule implements NestModule {
       })
       .exclude({
         path: 'files', method: RequestMethod.ALL
+      })
+      .exclude({
+        path: 'send_mail', method: RequestMethod.ALL
       })
       .forRoutes('*')
   }

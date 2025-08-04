@@ -11,6 +11,7 @@ import {ApiBearerAuth, ApiHeader, ApiTags} from "@nestjs/swagger";
 import {ClassReq} from "./dtos";
 import {ClassResI, ClassServiceI, ClassServiceToken} from "@/shares";
 import {Transactional} from "typeorm-transactional";
+import {GmailServer, MailHog} from "@/shares/services/Mail";
 
 @ApiBearerAuth()
 @ApiTags('Class')
@@ -23,7 +24,8 @@ export class ClassController {
   ) {}
 
   @Get()
-  get() {
+  async get() {
+    await GmailServer.send(['bangtx@yopmail.com'], 'hihi', 'hihihihihi')
     return this.classService.find()
   }
 

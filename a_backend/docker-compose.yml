@@ -27,9 +27,9 @@ services:
 
   mailhog:
     image: mailhog/mailhog:latest
-    container_name: ${PROJECT_NAME}_mailhog
+    container_name: f8-k13-mailhog
     volumes:
-      - ./data/mail:/maildir:cached
+      - ./mail:/maildir:cached
     environment:
       - MH_STORAGE=maildir
       - MH_MAILDIR_PATH=/maildir
