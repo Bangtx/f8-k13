@@ -11,6 +11,18 @@ services:
     volumes:
       - ./db:/var/lib/postgresql/data
 
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: ${PROJECT_NAME}_mailhog
+    volumes:
+      - ./data/mail:/maildir:cached
+    environment:
+      - MH_STORAGE=maildir
+      - MH_MAILDIR_PATH=/maildir
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
 #  db2:
 #    container_name: f8-k13-db2
 #    image: mysql:8.0
